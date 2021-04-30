@@ -68,5 +68,18 @@ app.get('/register', (req,res)=>{
     res.render('registro');
 });
 
+app.post('/register', async (req,res)=>{
+
+    try{
+        const hash = await bcrypt.hash(req.body.password, 10);
+        await User.create({name:req.body.name, email:req.body.email, password:hash});
+        res.redirect('/');
+
+    }catch(err){
+        console.log(err);
+    }
+    
+});
+
 
 app.listen(3000, () => console.log('Listening on port 3000!'));
