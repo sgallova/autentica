@@ -54,7 +54,6 @@ app.post('/login', async (req,res)=>{
     
 });
 
-
 app.get('/logout', (req,res)=>{
     res.clearCookie('user');
     req.session = null;
@@ -62,13 +61,11 @@ app.get('/logout', (req,res)=>{
 });
 
 app.get('/', (req,res)=>{
-    if(!req.session.user){
         res.redirect('/login');
-    }
 });
 
 app.get('/register', (req,res)=>{
-    res.render('/registro');
+    res.render('registro');
 });
 
 
