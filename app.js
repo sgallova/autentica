@@ -61,4 +61,10 @@ app.get('/logout', (req,res)=>{
     res.redirect('/login');
 });
 
+app.get('/', (req,res)=>{
+    if(!req.session.user){
+        res.redirect('/login');
+    }
+});
+
 app.listen(3000, () => console.log('Listening on port 3000!'));
